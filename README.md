@@ -2,9 +2,25 @@
 
 App # 1 Pomodoro
 
->> Get the .exe file and install into your system and you are ready to go .
+>> How to Use and Some Functions
 
-    Functions
+    How to Use :
+
+    1 . Clone the Repositary
+
+    2 . Go to command prompt and install the below dependencies .
+
+        2.1 . type "pip install pygame"
+
+        2.2 . type "pip install matplotlib"
+
+        2.3 . type "pip install calender"
+
+        2.4 . type "pip install json"
+
+    3 . Run the "code.py" script
+
+    Functionality :
 
     1 . Visualisation of Progress using Simple Graph .
 
