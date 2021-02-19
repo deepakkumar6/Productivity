@@ -7,6 +7,7 @@ import json
 import sys
 from datetime import date
 from calendar import monthrange
+from PIL import Image,ImageTk
 
 
 # time_window
@@ -192,16 +193,21 @@ def update_json():
 def rgbtohex(r,g,b):
     return f'#{r:02x}{g:02x}{b:02x}'
 
-# main window
-root = tk.Tk(screenName="Main")
-root.title('POMODORO')
-root.configure(bg="#33ffff")
-root.geometry("530x320")
 
-# colors 
+# color's Code
 COL_A = "#ec7063"
 COL_B = "#ea220e"
 COL_C = "#61ee10"
+COL_D = "#33ffff"
+
+# main window
+
+root = tk.Tk(screenName="Main")
+root.title('POMODORO')
+root.configure(bg=COL_D)
+root.geometry("530x320")
+
+
 
 MINUTES = 25
 # creating the label
@@ -221,13 +227,13 @@ label_minute.grid(row=0, column=0, padx=10, pady=10)
 # taking input from the user
 minutes = tk.Entry(root, text='50',
                    bd=4,
-                   width=3,
+                   width=4,
                    bg='grey',
                    fg='white',
                    cursor="dotbox",
                    selectborderwidth=6,
-                   font=('Times', '35', 'bold'))
-minutes.insert(0, "25")
+                   font=('Times', '36', 'bold'))
+minutes.insert(1, "25")
 minutes.grid(row=0, column=1, padx=10, pady=10)
 
 # creating the buttons
@@ -244,17 +250,20 @@ set_default_time_button = tk.Button(root,
 set_default_time_button.grid(row=0, column=2, padx=10, pady=10)
 
 # go button
+image = Image.open("play_image.png")
+image = image.resize((80,80))
+photo = ImageTk.PhotoImage(image)
 go_button = tk.Button(root,
-                      text='GO',
+                      image = photo,
                       command=go_button_help,
-                      height=4,
-                      width=13,
-                      bd=4,
-                      bg = COL_B,
-                      relief=tk.RAISED,
-                      activebackground='blue',
-                      font=('Times', '10', 'bold'),
-                      activeforeground='red')
+                      height=80,
+                      width=80,
+                      bd=0,
+                      bg = COL_D,
+                      relief=tk.FLAT,
+                      activeforeground=COL_D,
+                      activebackground=COL_D,
+                      font=('Times', '10', 'bold'))
 go_button.grid(row=1, column=1, padx=10, pady=10)
 
 # graph window button
