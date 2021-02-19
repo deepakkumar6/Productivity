@@ -42,6 +42,4 @@ App # 1 Pomodoro
     3 . User Settings
 
 
-App # 2 Coming Soon ...
 
->> Get the .exe file and install into your system and you are ready to go.
