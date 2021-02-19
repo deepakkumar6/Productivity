@@ -7,7 +7,7 @@ import json
 import sys
 from datetime import date
 from calendar import monthrange
-from PIL import Image,ImageTk
+from PIL import Image, ImageTk
 
 
 # time_window
@@ -15,6 +15,14 @@ from PIL import Image,ImageTk
 # graph_window
 # about_us window
 # root window
+
+
+# color's Code
+COL_A = "#ec7063"
+COL_B = "#ea220e"
+COL_C = "#61ee10"
+COL_D = "#33ffff"
+
 
 def timer_window(MINUTES):
 
@@ -124,11 +132,15 @@ def graph_window(show_graph=True):
 # about window
 def about_us_window():
 
+    global Col_D
+
     about_win = tk.Tk(screenName="About Us")
 
     about_win.title('POMODORO')
 
-    about_win.geometry("800x590")
+    about_win.geometry("850x590")
+
+    about_win.configure(bg=COL_D)
 
     sys.stdin = open('about_us.txt', 'r')
 
@@ -142,8 +154,8 @@ def about_us_window():
 
         label = tk.Label(about_win,
                          text=total,
-                         bg='orange',
-                         font=('Times', '14', 'bold'))
+                         bg=COL_D,
+                         font=('verdana', '14', 'bold'))
 
         label.pack()
 
@@ -190,30 +202,25 @@ def go_button_help():
 def update_json():
     graph_window(False)
 
-def rgbtohex(r,g,b):
+
+def rgbtohex(r, g, b):
     return f'#{r:02x}{g:02x}{b:02x}'
 
 
-# color's Code
-COL_A = "#ec7063"
-COL_B = "#ea220e"
-COL_C = "#61ee10"
-COL_D = "#33ffff"
-
 # main window
-
 root = tk.Tk(screenName="Main")
 root.title('POMODORO')
 root.configure(bg=COL_D)
-root.geometry("530x320")
-
+root.geometry("630x340")
+root.maxsize(630, 340)
+root.minsize(630, 340)
 
 
 MINUTES = 25
 # creating the label
 
 label_minute = tk.Label(root,
-                        text="ENTER MINUTES : ",
+                        text=" ENTER MINUTES : ",
                         bg=COL_C,
                         cursor='heart',
                         width=15,
@@ -221,7 +228,7 @@ label_minute = tk.Label(root,
                         height=3,
                         relief=tk.RAISED,
                         activeforeground='red',
-                        font=('Times', '14', 'bold'))
+                        font=('verdana', '14', 'bold'))
 label_minute.grid(row=0, column=0, padx=10, pady=10)
 
 # taking input from the user
@@ -232,7 +239,7 @@ minutes = tk.Entry(root, text='50',
                    fg='white',
                    cursor="dotbox",
                    selectborderwidth=6,
-                   font=('Times', '36', 'bold'))
+                   font=('verdana', '36', 'bold'))
 minutes.insert(1, "25")
 minutes.grid(row=0, column=1, padx=10, pady=10)
 
@@ -242,7 +249,7 @@ set_default_time_button = tk.Button(root,
                                     width=15,
                                     bd=4,
                                     height=2,
-                                    font=('Times', '14', 'bold'),
+                                    font=('verdana', '14', 'bold'),
                                     activebackground='blue',
                                     activeforeground='red',
                                     text='25 MINUTES',
@@ -250,62 +257,73 @@ set_default_time_button = tk.Button(root,
 set_default_time_button.grid(row=0, column=2, padx=10, pady=10)
 
 # go button
-image = Image.open("play_image.png")
-image = image.resize((80,80))
-photo = ImageTk.PhotoImage(image)
+go_image = Image.open("play_image.png")
+go_image = go_image.resize((80, 80))
+go_photo = ImageTk.PhotoImage(go_image)
 go_button = tk.Button(root,
-                      image = photo,
+                      image=go_photo,
                       command=go_button_help,
                       height=80,
                       width=80,
                       bd=0,
-                      bg = COL_D,
+                      bg=COL_D,
                       relief=tk.FLAT,
                       activeforeground=COL_D,
                       activebackground=COL_D,
-                      font=('Times', '10', 'bold'))
+                      font=('verdana', '10', 'bold'))
 go_button.grid(row=1, column=1, padx=10, pady=10)
 
 # graph window button
-graph_window_button = tk.Button(root, text="SHOW GRAPH",
-                                bd=4,
+graph_image = Image.open("graph_icon.webp")
+graph_image = graph_image.resize((80, 80))
+graph_photo = ImageTk.PhotoImage(graph_image)
+graph_window_button = tk.Button(root,
+                                image=graph_photo,
+                                bd=0,
                                 justify=tk.LEFT,
-                                height=4,
-                                width=13,
-                                relief=tk.RAISED,
-                                activeforeground='red',
-                                activebackground='blue',
-                                bg = COL_A,
-                                font=('Times', '14', 'bold'),
+                                height=80,
+                                width=80,
+                                relief=tk.FLAT,
+                                activeforeground=COL_D,
+                                activebackground=COL_D,
+                                bg=COL_D,
+                                font=('verdana', '14', 'bold'),
                                 command=graph_window)
 graph_window_button.grid(row=2, column=0, padx=10, pady=10)
 
 # setting window buttons
-setting_button = tk.Button(root, text="SETTINGS",
-                           bd=4,
+setting_image = Image.open("settings_image.png")
+setting_image = setting_image.resize((80, 80))
+setting_photo = ImageTk.PhotoImage(setting_image)
+setting_button = tk.Button(root,
+                           image=setting_photo,
+                           bd=0,
                            justify=tk.LEFT,
-                           height=4,
-                           width=12,
-                           relief=tk.RAISED,
-                           activeforeground='red',
-                           bg = COL_A,
-                           font=('Times', '14', 'bold'),
-                           activebackground='blue',
+                           height=80,
+                           width=80,
+                           relief=tk.FLAT,
+                           activeforeground=COL_D,
+                           bg=COL_D,
+                           font=('verdana', '14', 'bold'),
+                           activebackground=COL_D,
                            command=setting_window)
 setting_button.grid(row=2, column=1, pady=10)
 
 # about window buttons
+about_icon = Image.open("about_icon2.jpg")
+about_icon = about_icon.resize((80, 80))
+about_icon = ImageTk.PhotoImage(about_icon)
 about_button = tk.Button(root,
-                         text="ABOUT US",
-                         bd=4,
-                         bg = COL_A,
+                         image=about_icon,
+                         bd=0,
+                         bg=COL_D,
                          justify=tk.LEFT,
-                         height=4,
-                         width=12,
-                         relief=tk.RAISED,
-                         activeforeground='red',
-                         font=('Times', '14', 'bold'),
-                         activebackground='blue',
+                         height=80,
+                         width=80,
+                         relief=tk.FLAT,
+                         activeforeground=COL_D,
+                         font=('verdana', '14', 'bold'),
+                         activebackground=COL_D,
                          command=about_us_window)
 about_button.grid(row=2, column=2, padx=10, pady=10)
 
