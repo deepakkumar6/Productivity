@@ -41,5 +41,8 @@ App # 1 Pomodoro
 
     3 . User Settings
 
+>> User Interface:
 
+<img width="473" alt="sc9" src="https://user-images.githubusercontent.com/57006036/149193879-e6c1f932-6961-4988-b8cd-6e4159f2413b.PNG">
 
+<img width="479" alt="sc10" src="https://user-images.githubusercontent.com/57006036/149193915-c83fc32f-3f01-425f-9a33-80b76eed6447.PNG">
